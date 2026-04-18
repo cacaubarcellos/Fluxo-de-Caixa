@@ -716,7 +716,7 @@ Texto: ${text}`;
         'anthropic-dangerous-request-from-browser':'true'
       },
       body:JSON.stringify({
-        model:'claude-haiku-4-5-20251001',
+        model:'claude-3-haiku-20240307',
         max_tokens:1000,
         messages:[{role:'user',content:prompt}]
       })
@@ -753,7 +753,7 @@ async function testarChave(){
     const res=await fetch('https://api.anthropic.com/v1/messages',{
       method:'POST',
       headers:{'Content-Type':'application/json','x-api-key':apiKey,'anthropic-version':'2023-06-01','anthropic-dangerous-request-from-browser':'true'},
-      body:JSON.stringify({model:'claude-haiku-4-5-20251001',max_tokens:10,messages:[{role:'user',content:'Oi'}]})
+      body:JSON.stringify({model:'claude-3-haiku-20240307',max_tokens:10,messages:[{role:'user',content:'Oi'}]})
     });
     if(res.ok){showAlert(alertEl,'Chave funcionando! O Leitor IA está pronto para uso.','success');}
     else{const d=await res.json().catch(()=>({}));showAlert(alertEl,'Chave inválida: '+(d?.error?.message||'HTTP '+res.status),'error');}
